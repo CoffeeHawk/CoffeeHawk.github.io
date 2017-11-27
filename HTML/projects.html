@@ -18,15 +18,33 @@
 		<li><a href="contact.html">Contact</a></li>
 	</ul>
 
+	<div class="content">
 <h2>Projects</h2>
 <p>
 To here I add links and descriptions about projects I have been part of <br>
 Or prototypes I have made myself
 </p>
 
-<div class="footer">
-	<p id="demo">HELLO </p>
-	<script src="../JS/geolocation.js"></script>
-	</div>
+<h3>Drag and Drop test </h3>
+	<script src="../JS/dragdrop.js"></script>
+	<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	<img id="drag1" src="../MEDIA/nim.png" draggable="true" ondragstart="drag(event)" width="336" height="69" >
+
+<h3>Video example</h3>	
+<video width="400" controls>
+  <source src="../MEDIA/example.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+
+<h3>Audio example</h3>	
+<audio controls>
+  <source src="../MEDIA/example.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+
+</div>
+<footer>
+	<p>Site made by Mika Lintula</p>
+</footer>
 </body>
 </html>

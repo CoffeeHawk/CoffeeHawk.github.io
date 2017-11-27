@@ -1,17 +1,22 @@
-/*Contact table*/
-#ct{
-	float: center;
-	border-spacing: 5px;
+#skill{
 	border-collapse: collapse;
+	border: 1px solid black;
 }
-#ct table, th,td{
-	border: 1px solid black;	
+#skill table,th,td{
+	border: white;	
+	border-bottom: 1px solid black;
 }
-#ct th{
+#skill th{
+	font-size: 16px;
+	height: 50px;
+	width: 250px;
+	text-align: left;
+}
+#skill td{
+	font-size: 14px;
 	height: 30px;
-	width: 190px;
-}
 
+}
 img.image {
 	display: inline-block;
 	color: currentColor;
@@ -21,4 +26,14 @@ img.image {
 	float: right;
 	position: relative; /* 1 */
 	top: -0.1em;
+}
+
+.textbox{
+	width: 550px;
+}
+
+#googleMap {
+	margin: 0 auto 0 auto;
+	width:50%;
+	height:200px;
 }

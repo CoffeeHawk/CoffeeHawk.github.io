@@ -7,4 +7,4 @@ var rectHeight = 100;
 var rectWidth = 1000;
 var rectX = 0;
 var rectY = 0;
-ctx.fillText("Portfolio of Lintu",rectX+(rectWidth/2),rectY+(rectHeight/2));
+ctx.fillText("Future portfolio of Mika Lintula",rectX+(rectWidth/2),rectY+(rectHeight/2));
