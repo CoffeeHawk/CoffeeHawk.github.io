@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +18,19 @@
 To here I add links and descriptions about projects I have been part of <br>
 Or prototypes I have made myself
 </p>
+
+<div id="testApp">
+		
+	<div class = "amount">
+			<p> Amount coffee drinked ({{amount.length}})</p>
+	</div>
+	
+	<products :holic="holic" @add-to-cart="updateCart"></products>
+	
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="../JS/main.js"></script>
+
 <!--
 <h3>Video example</h3>	
 <video width="400" controls>
