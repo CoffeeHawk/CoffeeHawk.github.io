@@ -31,6 +31,10 @@ body{
 	color: white;
 }
 
+ul{
+	list-style: none;
+}
+
 
 .content{
 	padding:12px;
@@ -63,9 +67,8 @@ footer{
     border: 1px solid #aaaaaa;
 }
 
-h2{
+h1{
 	text-align: center;
-	
 }
 
 .color-box
@@ -78,4 +81,15 @@ h2{
 .disabledButton
 {
 		background-color: #FFFFFF;
+}
+
+.pagetab
+{
+	text-align: center;
+}
+
+.pagetab
+{
+	text-align: center;
+	font-size: larger;
 }

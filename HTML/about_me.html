@@ -7,28 +7,27 @@
 </head>
 <body>
 
-	<!---Navigation-->
-	<ul class="nav">
-		<li><a class = "active" href="about_me.html">About Me</a></li>
-		<li><a href="projects.html">Projects</a></li>
-		<li><a href="contact.html">Contact</a></li>
-	</ul>
-	
-	<div class="content">
-		<h2>About me</h2>
-		<div class = "textbox">
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-			incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-			exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-			dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-			Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-			mollit anim id est laborum.</p>
+	<!---<div class="header">
+	Navigation
+		<ul class="nav">
+			<li><a class = "active" href="about_me.html">About me & Contacts</a></li>
+			<li><a href="../index.html">Projects</a></li>
+			<li><a href="contact.html">Only for curious</a></li>
+		</ul>
+		<h1>BirdHouse Company</h1>
+	</div>-->
+		<div id = "projectsApp">
+			<nav-bar v-bind:pagenum="1"></nav-bar>
+			<test-thing></test-thing>
 		</div>
 
-		
-	</div>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+		<script src="../JS/projects_page.js"></script>
+	
 	<div class="footer">
-		<p>Site made by Mika Lintula</p>
+		<p>Site made by yours truly</p>
+		<p>Mika Lintula</p>
 	</div>
 </body>
 </html>

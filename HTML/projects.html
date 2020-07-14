@@ -2,10 +2,21 @@
 <html>
 <head>
 <link rel="stylesheet" href="../CSS/main.css">
+<link rel="stylesheet" href="../CSS/"
 	<title>Projects</title>
 </head>
 <body>
-	<!---Navigation-->
+	<div id = "projectsApp">
+		<nav-bar v-bind:pagenum="2"></nav-bar>
+
+		
+		<projects-page></projects-page>
+	</div>
+	
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+	<script src="../JS/projects_page.js"></script>
+	<!---Navigation
 	<ul class="nav">
 		<li><a href="about_me.html">About Me</a></li>
 		<li><a class = "active" href="projects.html">Projects</a></li>
@@ -13,12 +24,16 @@
 	</ul>
 
 	<div class="content">
-<h2>Projects</h2>
+<h2>Projects</h2>-->
+
+<!--
 <p>
 To here I add links and descriptions about projects I have been part of <br>
 Or prototypes I have made myself
 </p>
+-->
 
+<!-- VUE.js test
 <div id="testApp">
 		
 	<div class = "amount">
@@ -30,7 +45,7 @@ Or prototypes I have made myself
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="../JS/main.js"></script>
-
+-->
 <!--
 <h3>Video example</h3>	
 <video width="400" controls>
@@ -44,7 +59,6 @@ Or prototypes I have made myself
 Your browser does not support the audio element.
 </audio>
 -->
-</div>
 <footer>
 	<p>Site made by Mika Lintula</p>
 </footer>
