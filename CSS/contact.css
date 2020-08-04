@@ -5,3 +5,9 @@
 #L2{
 	list-style: none;
 }
+
+table{
+	table-layout: auto;
+	width: 100%;
+
+}

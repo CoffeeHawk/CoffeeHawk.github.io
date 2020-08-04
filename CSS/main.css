@@ -1,7 +1,7 @@
 
 body{ 
 	width:1000px;
-	margin:0 auto 15px auto;
+	margin:0 auto 0px auto;
 	
 }
 
@@ -32,7 +32,8 @@ body{
 }
 
 ul{
-	list-style: none;
+	list-style-type: none;
+	padding: 0;
 }
 
 
@@ -81,11 +82,6 @@ h1{
 .disabledButton
 {
 		background-color: #FFFFFF;
-}
-
-.pagetab
-{
-	text-align: center;
 }
 
 .pagetab

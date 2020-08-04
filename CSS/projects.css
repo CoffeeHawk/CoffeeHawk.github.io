@@ -1,4 +1,47 @@
-.project-container{}
-.project-img{}
-.project-header{}
-.project-definition{}
+
+
+.tab{
+    padding-left: 15px;
+    padding-right: 55px;
+    color: green;
+    font-size: 24px;
+}
+
+.project-container{
+    width: 980px;
+    height: 210px;
+    background-color:rgb(72, 25, 117);
+    margin: 10px;
+}
+.tab{
+    padding-left: 15px;
+    padding-right: 55px;
+    color: green;
+    font-size: 24px;
+}
+
+table.project-table{
+    table-layout: fixed;
+    width: 100%;  
+}
+td{
+    height:204px;
+}
+.project-info{
+    background-color: crimson;
+    margin:10px;
+    height: 170px;
+}
+
+.pr-header{
+    color: rgb(196, 128, 3);
+    font-weight: bold;
+    text-align: center;
+}
+
+.pr-txt{
+    width: 420px;
+    height: 40%;
+    margin: 10px;
+    text-align: center;
+}

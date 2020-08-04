@@ -56,14 +56,25 @@ Vue.component('projects-page',{
         pipprojects:[
 			{
 				pipId:011,
-				pipLeftRight:false,
-                pipName: 'piptemp',
+				pipLeftRight:true,
+                pipName: 'piptemp - LEFT',
                 pipImageVideo: 0,
                 pipImage:'../MEDIA/Tile4.png',
                 pipVideo:'video media',
                 pipInfo:'This is the info or description of the project',
                 pipGithubBool:true,
-                pipLinkGithub:'Link to the github',
+                pipLinkGithub:'Link to the github'
+			},
+			{
+				pipId:022,
+				pipLeftRight:false,
+                pipName: 'piptemp - RIGHT',
+                pipImageVideo: 0,
+                pipImage:'../MEDIA/Tile4.png',
+                pipVideo:'video media',
+                pipInfo:'This is the info or description of the project',
+                pipGithubBool:true,
+                pipLinkGithub:'Link to the github'
 			}
 		],
 		reviews: []
@@ -147,46 +158,82 @@ Vue.component('product-tabs', {
 				{{tab}}
 			</span>
 
-			<div v-show="selectedTab === 'ShowCase'">
-				<ul>
-					<li v-for="scprojects in scprojectArray">
-					<div v-show="scprojects.scLeftRight" class = "pr-model">
-					<img v-if="scprojects.scImage" :src="scprojects.scImage" alt="tile image no 1">
-					<p>{{scprojects.scName}}</p>
-					<p>{{scprojects.scInfo}}</p>
-					<p>
-						<a v-show=scprojects.scGithubBool :href="scprojects.scLinkGithub" target="_blank">Github</a>
-						<a v-show=scprojects.scDemoBool :href="scprojects.scLinkDemo" target="_blank">Demo</a>
-						<a v-show=scprojects.scIchioBool :href="scprojects.scLinkIchio" target="_blank">Ichi.io</a>
-						<a v-show=scprojects.scShopBool :href="scprojects.scLinkShop" target="_blank">Shop</a>
-					</p>
-					</div>
-					<div v-show="!scprojects.scLeftRight" class = "pl-model">
-					<img v-if="scprojects.scImage" :src="scprojects.scImage" alt="tile image no 1">
-					<p>{{scprojects.scName}}</p>
-					<p>{{scprojects.scInfo}}</p>
-					<p>
-						<a v-show=scprojects.scGithubBool :href="scprojects.scLinkGithub" target="_blank">Github</a>
-						<a v-show=scprojects.scDemoBool :href="scprojects.scLinkDemo" target="_blank">Demo</a>
-						<a v-show=scprojects.scIchioBool :href="scprojects.scLinkIchio" target="_blank">Ichi.io</a>
-						<a v-show=scprojects.scShopBool :href="scprojects.scLinkShop" target="_blank">Shop</a>
-					</p>
-					</div>
-					</li>
-				</ul>
+			<div style="background-color:gray;" v-show="selectedTab === 'ShowCase'">
+				<div class="project-container" v-for="scprojects in scprojectArray">
+				<table class="project-table">
+					<tr v-show="scprojects.scLeftRight">
+						<td>
+							<div class="project-info">
+								<p class= "pr-header">{{scprojects.scName}}</p>
+								<p class="pr-txt">{{scprojects.scInfo}}</p>
+								<p>
+									<a v-show=scprojects.scGithubBool :href="scprojects.scLinkGithub" target="_blank">Github</a>
+									<a v-show=scprojects.scDemoBool :href="scprojects.scLinkDemo" target="_blank">Demo</a>
+									<a v-show=scprojects.scIchi oBool :href="scprojects.scLinkIchio" target="_blank">Ichi.io</a>
+									<a v-show=scprojects.scShopBool :href="scprojects.scLinkShop" target="_blank">Shop</a>
+								</p>
+							</div>
+						</td>
+
+						<td>
+							<img v-if="scprojects.scImage" :src="scprojects.scImage" alt="tile image no 1">
+						</td>
+					</tr>
+					<tr v-show="!scprojects.scLeftRight">
+						<td>
+						<img v-if="scprojects.scImage" :src="scprojects.scImage" alt="tile image no 1">
+						</td>
+
+						<td>
+						<div class="project-info">
+								<p class="pr-header">{{scprojects.scName}}</p>
+								<p class="pr-txt">{{scprojects.scInfo}}</p>
+								<p>
+									<a v-show=scprojects.scGithubBool :href="scprojects.scLinkGithub" target="_blank">Github</a>
+									<a v-show=scprojects.scDemoBool :href="scprojects.scLinkDemo" target="_blank">Demo</a>
+									<a v-show=scprojects.scIchi oBool :href="scprojects.scLinkIchio" target="_blank">Ichi.io</a>
+									<a v-show=scprojects.scShopBool :href="scprojects.scLinkShop" target="_blank">Shop</a>
+								</p>
+							</div>
+						</td>
+					</tr>
+				</table>
+				</div>
 			</div>
 
 			<div v-show="selectedTab === 'PIP'">
-				<ul>
-					<li v-for="pipprojects in pipprojectArray">
-					<p>{{pipprojects.pipName}}</p>
-					<img v-if="pipprojects.pipImage" :src="pipprojects.pipImage" alt="tile image no 1">
-					<p>{{pipprojects.pipInfo}}</p>
-					<p v-show=pipprojects.pipGithubBool>{{pipprojects.pipLinkGithub}}</p>
-					</li>
-				</ul>
+				<div class="project-container" v-for="pipprojects in pipprojectArray">
+				<table class="project-table">
+					<tr v-show="pipprojects.pipLeftRight">
+						<td>
+							<img v-if="pipprojects.pipImage" :src="pipprojects.pipImage" alt="tile image no 1">
+						</td>
+						<td>
+							<div class = "project-info">
+								<p class= "pr-header">{{pipprojects.pipName}}</p>
+								<p class="pr-txt">{{pipprojects.pipInfo}}</p>
+								<p v-show=pipprojects.pipGithubBool>{{pipprojects.pipLinkGithub}}</p>
+							</div>
+						</td>
+					</tr>
+				</table>
+				<table class="project-table">
+					<tr v-show="!pipprojects.pipLeftRight">
+						<td>
+							<div class = "project-info">
+								<p class= "pr-header">{{pipprojects.pipName}}</p>
+								<p class="pr-txt">{{pipprojects.pipInfo}}</p>
+								<p v-show=pipprojects.pipGithubBool>{{pipprojects.pipLinkGithub}}</p>
+							</div>
+						</td>
+						
+						<td>
+							<img v-if="pipprojects.pipImage" :src="pipprojects.pipImage" alt="tile image no 1">
+						</td>
+					</tr>
+				</table>	
+				</div>
 			</div>
-			
 		</div>
 	`,
 	data(){
