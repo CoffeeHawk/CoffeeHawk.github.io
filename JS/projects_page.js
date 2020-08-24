@@ -51,6 +51,24 @@ Vue.component('projects-page',{
 				scLinkIchio:'Link to the Ichio',
 				scLinkShop:'',
 				scShopName:''
+			},
+			{
+				scId:002,
+				scLeftRight:true,
+                scName:'SC Image height test',
+                scImageVideo: 0,
+                scImage:'../MEDIA/bptemp.png',
+                scVideo:'video media',
+                scInfo:'This is the info or description of the project, this slot has test fot',
+				scGithubBool:false,
+				scDemoBool:false,
+				scIchioBool:false,
+				scShopBool:false,
+				scLinkGithub:'https://www.youtube.com/watch?v=7zMyA_a5rSU',
+				scLinkDemo:'Link to demo',
+				scLinkIchio:'Link to the Ichio',
+				scLinkShop:'',
+				scShopName:''
 			}
         ],
         pipprojects:[
@@ -99,39 +117,7 @@ Vue.component('projects-page',{
 	
 })
 
-Vue.component('sc-projects-tab',{
-	
-	template:`
-	<div>
-		<h4>Wrong site</h4>
-		<p>----------------------------------</p>
-        <base-container :projectstatus="projectstatus" ></base-container>
-	</div>
-	`,
-		data(){
-			return{
-				projectstatus: false
-			}
-		},
-		methods:{
-			
-		}
-	
-    })
-    
-Vue.component('pip-project-tab', {
-    template:`
-        <div>
-        <h4> Not accepting Reviews right now</h4>
-        <base-container :projectstatus="projectstatus" ></base-container>
-        </div>    
-    `,
-    data(){
-        return{
-            projectstatus: true
-        }
-    }
-})
+
 	
 Vue.component('product-tabs', {
 	props:{
@@ -175,13 +161,13 @@ Vue.component('product-tabs', {
 							</div>
 						</td>
 
-						<td>
-							<img v-if="scprojects.scImage" :src="scprojects.scImage" alt="tile image no 1">
+						<td class="pr-img-container">
+							<img class="pr-img" v-if="scprojects.scImage" :src="scprojects.scImage" alt="tile image no 1">
 						</td>
 					</tr>
 					<tr v-show="!scprojects.scLeftRight">
-						<td>
-						<img v-if="scprojects.scImage" :src="scprojects.scImage" alt="tile image no 1">
+						<td class="pr-img-container">
+						<img class="pr-img" v-if="scprojects.scImage" :src="scprojects.scImage" alt="tile image no 1">
 						</td>
 
 						<td>
@@ -206,7 +192,7 @@ Vue.component('product-tabs', {
 				<table class="project-table">
 					<tr v-show="pipprojects.pipLeftRight">
 						<td>
-							<img v-if="pipprojects.pipImage" :src="pipprojects.pipImage" alt="tile image no 1">
+							<img class="pr-img "v-if="pipprojects.pipImage" :src="pipprojects.pipImage" alt="tile image no 1">
 						</td>
 						<td>
 							<div class = "project-info">

@@ -1,5 +1,3 @@
-
-
 .tab{
     padding-left: 15px;
     padding-right: 55px;
@@ -9,15 +7,9 @@
 
 .project-container{
     width: 980px;
-    height: 210px;
+    height: 250px;
     background-color:rgb(72, 25, 117);
     margin: 10px;
-}
-.tab{
-    padding-left: 15px;
-    padding-right: 55px;
-    color: green;
-    font-size: 24px;
 }
 
 table.project-table{
@@ -25,12 +17,13 @@ table.project-table{
     width: 100%;  
 }
 td{
-    height:204px;
+    height:245px;
+    background-color: darkgreen;
 }
 .project-info{
     background-color: crimson;
     margin:10px;
-    height: 170px;
+    height: 200px;
 }
 
 .pr-header{
@@ -40,8 +33,11 @@ td{
 }
 
 .pr-txt{
-    width: 420px;
-    height: 40%;
-    margin: 10px;
     text-align: center;
+}
+
+.pr-img{
+    width: 450px;
+    height: 200px;
+    object-fit: scale-down;
 }
