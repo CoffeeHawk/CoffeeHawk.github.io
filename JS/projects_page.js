@@ -246,7 +246,7 @@ Vue.component('product-tabs', {
 					pipLeftRight:true,
 					pipName: 'Portfolio sivu',
 					pipImageVideo: 0,
-					pipImage:'../MEDIA/bptemp.PNG',
+					pipImage:'../MEDIA/portfoliobp.png',
 					pipVideo:'video media',
 					pipInfo:'Kyseinen sivu jolla olet juuri on kehityksessä oleva projekti, jota käännetään englanniksi ja tehdään paranteluja sitä mukaan kun opitaan lisää nettisivujen kehityksestä.',
 					pipGithubBool:true,
