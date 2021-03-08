@@ -122,7 +122,7 @@ Vue.component('project-tabs', {
 					</div>
 					<div class ="prcol2">
 						<div class="pr-img">
-							<!--img :src="pipproject.pipImage" alt="No Image Yet / or something went wrong again"-->
+							
 						</div>
 					</div>
 				</div>
@@ -156,7 +156,7 @@ Vue.component('project-tabs', {
 <div v-for="pipproject in pipprojects">
 		<div class="m-pr-container">
 			<div class="m-pr-img">
-				<img :src="pipproject.pipImage" alt="tile image no 1">
+				
 			</div>
 			<div class="m-pr-info">
 				<p class= "pr-header">{{pipproject.pipName}}</p>
@@ -247,7 +247,6 @@ Vue.component('project-tabs', {
 					pipLeftRight:true,
 					pipName: 'Portfolio sivu',
 					pipImageVideo: 0,
-					pipImage:'MEDIA/portfoliobp.png',
 					pipVideo:'video media',
 					pipInfo:'Kyseinen sivu jolla olet juuri on kehityksessä oleva projekti, joka odottaa täydellistä uudelleen aloitusta. Tätä projektia on käytetään opettelemaan Vue.js perusteita ja nyt enemmän oppineena on paljon ideoita miten tehdä tästä parempi kokonaisuus niin  ulkonäöltään ja toimivuudeltaan.',
 					pipGithubBool:false,
@@ -258,7 +257,6 @@ Vue.component('project-tabs', {
 					pipLeftRight:false,
 					pipName: 'GoDot Engine Nettikoodi',
 					pipImageVideo: 0,
-					pipImage:'MEDIA/fiverow.png',
 					pipVideo:'video media',
 					pipInfo:'Ystävän kanssa opetellaan Godoti Enginen saloja kehitettämällä yksinkertaista ristinolla peliä, siten että minä ohjelmoin serverin sekä muun nettikoodin ja hän pelimekaniikat. Tavoitteena on saada peli toimimaan netin välityksellä.',
 					pipGithubBool:false,
