@@ -7,50 +7,20 @@ Vue.component('projects-page',{
 	template:`
 	<div class = "projects-page">
 		
-		<div class="welcome-page" v-show="!welcomebool">
-			<h1 class="page-header" style="margin-top: 70px">To be: Mika Lintula<a  style="text-decoration:none" href = "HTML/portfolio.html">'</a>s portfolio</h1>
-			<div class="content">
-				<div class="w-col">
-					<h2>Huomio</h2>
-					<p>Portfoliota rakennellaan parhaillaan ja kyseisellä aluksi se on vain suomenkielisenä mutta englanninkielistä käännöstä työstetään.</p>
-				</div>
-				<div class="w-col">
-					<h2>Please read</h2>
-					<p>The portfolio is in construction and will be available only in Finnish at the start but it is undergoing the translation as we go.</p>
-				</div>
-
-				<button class="w-link" v-on:click="GoToPortfolio"
-				:disabled = "welcomebool"
-				:class="{disabledButton: welcomebool}">Portfolio →</button>
-			</div>
-		</div>
-
 		<div class="portfolio-content" v-show="welcomebool">	
-			<div class="nav">
-				<span class = "pagetab" 
-					
-					v-for="(tab, index) in navTabs" 
-					:key="index" 
-					@click = "selectedNavTab = tab"
-					:class="{activeNavTab: selectedNavTab === tab}">
-					{{tab}}
-				</span>
+
+			<h1 class="page-header">Kuka olen</h1>
+			<div >	
+				<for-curious-page></for-curious-page>
 			</div>
 
-			<h1 class="page-header">{{PageTitle}}</h1>
-
-			<div v-show="selectedNavTab === 'About me'">	
-				<about-me-page></about-me-page>
-			</div>
-
-			<div v-show="selectedNavTab === 'Projects'">	
+			<h1 class="page-header">Projekteja</h1>
+			<div>	
 				<project-tabs :mobile="isMobile()"></project-tabs>
 			</div>
 
-			<div v-show="selectedNavTab === 'For Curious'">	
-				<for-curious-page></for-curious-page>
-			</div>
 		</div>
+
 		<footer class="page-footer" v-show="welcomebool">
 			<p>Site made by Mika Lintula</p>
 		</footer>
@@ -61,7 +31,7 @@ Vue.component('projects-page',{
 		return	{
 			welcomebool: false,
 			headerName:'About me',
-			navTabs:['About me', 'Projects', 'For Curious'],
+			navTabs:[ 'Projects', 'For Curious'],
 			selectedNavTab: 'Projects'
 	}},
 	methods: 
@@ -110,39 +80,39 @@ Vue.component('project-tabs', {
 	,
 	template:`
 	<div class="projecttab" >
-	<div class="pr-tabs">
-		<span class = "tab" 
-			:class="{activeTab: selectedTab === tab}"
-			v-for="(tab, index) in tabs" 
-			:key="index" 
-			@click = "selectedTab = tab">
-			{{tab}}
-		</span>
-	</div>
+	
 	<div v-if="!mobile"> 
-		<div class="content-container" v-show="selectedTab === 'ShowCase'">
+		<div class="content-container">
+			<h2>Valmiita projekteja</h2>
 			<div class="project-container" v-for="scproject in scprojects">
 				<div class = "bas">
 					<div  v-bind:class ="[!scproject.scLeftRight ? righttxtclass : '', lefttxtclass]">
-							<p class= "pr-header">{{scproject.scName}}</p>
+							<p class= "pr-header">{{scproject.scName}}<p class="pr-time">{{scproject.scId}}</p></p>
 							<p class="pr-txt">{{scproject.scInfo}}</p>
 							<p class="pr-links">
 								<a v-show=scproject.scGithubBool :href="scproject.scLinkGithub" target="_blank">Github</a>
 								<a v-show=scproject.scDemoBool :href="scproject.scLinkDemo" target="_blank">Demo</a>
 								<a v-show=scproject.scIchi oBool :href="scproject.scLinkIchio" target="_blank">Ichi.io</a>
-								<a v-show=scproject.scShopBool :href="scproject.scLinkShop" target="_blank">Shop</a>
+								<a v-show=scproject.scShopBool :href="scproject.scLinkShop" target="_blank">{{scproject.scShopName}}</a>
 							</p>
 					</div>
 					<div class ="prcol2">
-						<div class="pr-img">
+						<div class="pr-img" v-if="scproject.scImageVideo">
 							<img :src="scproject.scImage" alt="tile image no 1">
+						</div>
+						<div class="pr-img" v-else>
+							<video width="320" height="240" controls>
+								<source :src="scproject.scVideo" type="video/webm">
+					   			Your browser does not support the video tag.
+				  			</video>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="content-container" v-show="selectedTab === 'P . I . P'">
+		<div class="content-container">
+			<h2>Aktiivisia projekteja</h2>
 			<div class="project-container" v-for="pipproject in pipprojects">
 				<div class = "bas">
 					<div  v-bind:class ="[!pipproject.pipLeftRight ? righttxtclass : '', lefttxtclass]">
@@ -160,6 +130,7 @@ Vue.component('project-tabs', {
 		</div>
 	</div>
 	<div v-else>
+
 	<div class="m-content-container" v-show="selectedTab === 'ShowCase'">
 
 	<div v-for="scproject in scprojects">
@@ -173,8 +144,8 @@ Vue.component('project-tabs', {
 				<p class="pr-links">
 					<a v-show=scproject.scGithubBool :href="scproject.scLinkGithub" target="_blank">Github</a>
 					<a v-show=scproject.scDemoBool :href="scproject.scLinkDemo" target="_blank">Demo</a>
-					<a v-show=scproject.scIchi oBool :href="scproject.scLinkIchio" target="_blank">Ichi.io</a>
-					<a v-show=scproject.scShopBool :href="scproject.scLinkShop" target="_blank">Shop</a>
+					<a v-show=scproject.scIchioBool :href="scproject.scLinkIchio" target="_blank">Ichi.io</a>
+					<a v-show=scproject.scShopBool :href="scproject.scLinkShop" target="_blank">{{scproject.scShopName}}</a>
 				</p>
 			</div>
 			
@@ -215,13 +186,13 @@ Vue.component('project-tabs', {
 
 			scprojects:[
 				{
-					scId:001,
+					scId:'2020/12',
 					scLeftRight:true,
 					scName: 'Unreal: Interaktiivinen viivakaavio VR maailmassa',
-					scImageVideo: 0,
+					scImageVideo: false,
 					scImage:'MEDIA/vr-linegraph.gif',
-					scVideo:'-',
-					scInfo:'Viivakaavion arvot haetaan csv-tiedostosta, jonka jälkeen viivakaavion arvoja voidaan tarkastella ja mitata kahden arvon välimatkaa x-axisella. Kulkee vasemman ohjaimen mukana.',
+					scVideo:'MEDIA/vr-linegraphy.webm',
+					scInfo:'Viivakaavion tehdään csv-tiedostosta löytyvästä tiedosta, joka perustuu oikeaan tärinämittaukseen. Viivakaavion luonnin jälkeen arvoja voidaan tarkastella ja mitata kahden arvon välimatkaa x-axisella.',
 					scGithubBool:false,
 					scDemoBool:false,
 					scIchioBool:false,
@@ -233,10 +204,28 @@ Vue.component('project-tabs', {
 					scShopName:'Steam/GooglePlay'
 				},
 				{
-					scId:002,
+					scId:'2021/02',
 					scLeftRight:false,
+					scName:'Linna Games Oy:n kotisivut',
+					scImageVideo: true,
+					scImage:'MEDIA/linnagamesPage.png',
+					scVideo:'video media',
+					scInfo:'Linna Games Oy kotisivut on tehty HTML5, CSS ja Bootstrap-5 hyödyntäen. Sivujen kehitystä jatketaan ja sisältöä muokataan yhteistyössä Linna Games Oy:n tiimin kanssa.',
+					scGithubBool:false,
+					scDemoBool:false,
+					scIchioBool:false,
+					scShopBool:true,
+					scLinkGithub:'https://www.youtube.com/watch?v=7zMyA_a5rSU',
+					scLinkDemo:'Link to demo',
+					scLinkIchio:'Link to the Ichio',
+					scLinkShop:'https://www.linnagames.com',
+					scShopName:'Linna Games'
+				},
+				{
+					scId:'2020/05',
+					scLeftRight:true,
 					scName:'Android Studio: Vedenjuonnin seuraamisen motivointi sovellus',
-					scImageVideo: 0,
+					scImageVideo: true,
 					scImage:'MEDIA/wt-app.png',
 					scVideo:'video media',
 					scInfo:'Tämä sovellus tehtiin osana Tradenomi opintojen opinnäytetyötä. Sovelluksen tavoitteena on helpottaa ja motivoida käyttäjää juomaan sekä seuraamaan omaa veden juomista "kasvattamalla" puuta merkityn veden määrän avulla.',
@@ -250,27 +239,28 @@ Vue.component('project-tabs', {
 					scLinkShop:'',
 					scShopName:''
 				}
+				
 			],
 			pipprojects:[
 				{
-					pipId:011,
+					pipId:'-',
 					pipLeftRight:true,
 					pipName: 'Portfolio sivu',
 					pipImageVideo: 0,
 					pipImage:'MEDIA/portfoliobp.png',
 					pipVideo:'video media',
-					pipInfo:'Kyseinen sivu jolla olet juuri on kehityksessä oleva projekti, jota käännetään englanniksi ja tehdään paranteluja sitä mukaan kun opitaan lisää nettisivujen kehityksestä.',
+					pipInfo:'Kyseinen sivu jolla olet juuri on kehityksessä oleva projekti, joka odottaa täydellistä uudelleen aloitusta. Tätä projektia on käytetään opettelemaan Vue.js perusteita ja nyt enemmän oppineena on paljon ideoita miten tehdä tästä parempi kokonaisuus niin  ulkonäöltään ja toimivuudeltaan.',
 					pipGithubBool:false,
 					pipLinkGithub:'Link to the github'
 				},
 				{
-					pipId:022, 
+					pipId:'<->', 
 					pipLeftRight:false,
-					pipName: 'Kaikkea muuta kivaa ohjelmointi juttuja',
+					pipName: 'GoDot Engine Nettikoodi',
 					pipImageVideo: 0,
-					pipImage:'MEDIA/bugfix.gif',
+					pipImage:'MEDIA/fiverow.png',
 					pipVideo:'video media',
-					pipInfo:'Ideoita on ja tulee lisää koko ajan, aika ei vaan aina riitä.',
+					pipInfo:'Ystävän kanssa opetellaan Godoti Enginen saloja kehitettämällä yksinkertaista ristinolla peliä, siten että minä ohjelmoin serverin sekä muun nettikoodin ja hän pelimekaniikat. Tavoitteena on saada peli toimimaan netin välityksellä.',
 					pipGithubBool:false,
 					pipLinkGithub:'Link to the github'
 				}
@@ -280,169 +270,6 @@ Vue.component('project-tabs', {
 	}
 })
 
-
-Vue.component('about-me-page',{
-	props:{
-	},
-	template:`
-	<div>	
-		<div class="content-container">
-			<h1>About me page - I think</h1>
-			<div class="main-info">
-				<div class="am-left-col">
-					<img class="am-img" src="MEDIA/stream.jpg" alt="placeholder for face">
-					<div class="am-info">
-						<p>Mika Lintula</p>
-						<p>+909 0909 09090</p>
-						<p>birdhouse@company.ml</p>
-						<!--p>linkedin link</p-->
-					</div>
-				</div>
-				<div class="am-txt">
-					<p >Lore ipsum thing is neede here to make sure all the text i write will fit	here</p>
-					<p >{{meinfo1}}</p>
-					<br>
-					<p>{{meinfo2}}</p>
-					<p>{{meinfo3}}</p>
-				</div>
-			</div>
-		</div>
-
-		<div class="content-container">
-			<div class="skills-container">
-				<h2 class="am-h2">Skills</h2>
-
-				<skills-list :skills="softwareskill" :title="'Ohjelmat'"></skills-list>
-				<skills-list :skills="plskill" :title="'ohjelmointi kielet'"></skills-list>
-				<skills-list :skills="miscskill" :title="'Sekalaista'"></skills-list>
-				<skills-list :skills="learning" :title="'Opettelussa'"></skills-list>
-				<skills-list :skills="hobbies":title="'Harrastukset'"></skills-list>
-				</div>
-			
-			<div class="history-container" >
-				<h2 class="am-h2">School history</h2>
-
-				<div v-for="schoolhistory in schoolList">
-					<div class="h-content"">
-						<table class="h-header">
-							<tr>
-								<td class="h-td">{{schoolhistory.name}}</td>
-								<td class="h-td">{{schoolhistory.gradu}}</td>
-							</tr>
-						</table>
-						<p>{{schoolhistory.specialzations}}</p>
-						<p> {{schoolhistory.school}}</p>
-					</div>
-				</div>
-
-				<h2 class="am-h2">Work history</h2>
-				<div v-for="historyList in historyList">
-					<div class="h-content"">
-						<table class="h-header">
-							<tr>
-								<td class="h-td">{{historyList.jobName}}</td>
-								<td class="h-td" v-show="historyList.useDate === false">{{historyList.season}} / {{historyList.year}}</td>
-								<td class="h-td" v-show="historyList.useDate === true">{{historyList.startDate}} - {{historyList.endDate}}</td>
-							</tr>
-						</table>
-						
-						<p class="h-discrpt">{{historyList.jobDescript}}</p>
-						<p class="h-place">{{historyList.place}}</p>
-					</div>
-				</div>
-				
-			</div>
-		</div>
-
-	</div>	
-	`,
-	data(){
-		return{
-			meinfo1:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Semper feugiat nibh sed pulvinar proin. Eu scelerisque felis imperdiet proin fermentum leo vel orci. Sed lectus vestibulum mattis ullamcorper velit sed ullamcorper. Sed faucibus turpis in eu mi bibendum neque egestas congue. Enim tortor at auctor urna nunc id cursus metus. Mattis aliquam faucibus purus in massa. Aliquam malesuada bibendum arcu vitae elementum curabitur vitae nunc sed. Enim neque volutpat ac tincidunt vitae semper quis lectus. Vel pretium lectus quam id leo in vitae turpis massa. At tempor commodo ullamcorper a lacus vestibulum sed arcu non. Nec nam aliquam sem et tortor consequat id. Eget sit amet tellus cras adipiscing enim eu. Risus commodo viverra maecenas accumsan lacus vel facilisis. Metus aliquam eleifend mi in nulla. Eu consequat ac felis donec et odio pellentesque diam volutpat. Pellentesque id nibh tortor id aliquet. Hac habitasse platea dictumst quisque sagittis. Ultrices sagittis orci a scelerisque purus semper.',
-			meinfo2:'Nisl purus in mollis nunc sed id. Placerat duis ultricies lacus sed turpis tincidunt id aliquet risus. Tincidunt id aliquet risus feugiat. Turpis in eu mi bibendum neque. Eu ultrices vitae auctor eu augue ut lectus. Aliquam sem fringilla ut morbi. Pellentesque dignissim enim sit amet venenatis urna cursus eget. Amet volutpat consequat mauris nunc congue. Egestas congue quisque egestas diam in. Sed adipiscing diam donec adipiscing tristique risus nec feugiat. Bibendum ut tristique et egestas quis ipsum suspendisse ultrices. Faucibus nisl tincidunt eget nullam. Potenti nullam ac tortor vitae purus faucibus ornare suspendisse. Sed lectus vestibulum mattis ullamcorper velit sed ullamcorper morbi. Ornare suspendisse sed nisi lacus. Vestibulum sed arcu non odio euismod. Lectus urna duis convallis convallis tellus id interdum velit.',
-			meinfo3:'Elementum eu facilisis sed odio. Sed blandit libero volutpat sed cras ornare arcu dui. Egestas tellus rutrum tellus pellentesque eu tincidunt tortor. Libero nunc consequat interdum varius sit amet mattis vulputate enim. Est ultricies integer quis auctor elit sed vulputate mi sit. Sit amet facilisis magna etiam tempor orci eu lobortis. Turpis egestas maecenas pharetra convallis posuere morbi. Ornare massa eget egestas purus viverra accumsan in. Ac odio tempor orci dapibus ultrices in. Vulputate ut pharetra sit amet aliquam id. Volutpat est velit egestas dui id ornare arcu odio ut. Lectus arcu bibendum at varius vel pharetra vel turpis nunc. Neque gravida in fermentum et. Vitae aliquet nec ullamcorper sit amet risus nullam eget. Tristique sollicitudin nibh sit amet commodo nulla facilisi. Consectetur adipiscing elit pellentesque habitant.',
-			
-			softwareskill:['Android Studio','Unity','Toimisto-ohjelmat'],
-			plskill:['C#','C++','Java','HTML/CSS','JavaScript'],
-			miscskill:['Tietokanta','Mobiili kehitys','Versiohallinta'],
-			learning:['Vue.js','Godot Engine', 'Audio editointi'],
-			hobbies:['Valokuvaus','Chainmail korut','Käsityöt'],
-
-			schoolList:[
-				{
-					gradu:'5/2020',
-					school:'Kajaanin ammattikorkeakoulu',
-					projessionName:'Tradenomi',
-					specialzations:'Tieto- ja viestintätekniikka, peliala',
-					notes:''
-				},
-				{
-					gradu:'2015',
-					school:'Ammattiopisto Lappia, Tornio',
-					projessionName:'Datanomi',
-					specialzations:'Tieto- ja viestintätekniikka, perustutkinto',
-					notes:''
-				},
-			],
-
-			historyList:[
-				{
-					year:'2015',
-					season:'Talvi',
-					useDate: true,
-					startDate:'10.10.1000',
-					endDate:'11.11.1111',
-					place:'Yritys, Kajaani',
-					jobName:'Ohjelmoija',
-					jobDescript:'Toiminnon Y kehittämistä sovellukseen X versioon Z',
-				},
-				{
-					year:'2014',
-					season:'Kesä',
-					useDate: false,
-					startDate:'20.20.2000',
-					endDate:'21.21.2111',
-					place:'Tornio, Kajaani',
-					jobName:'Kehittäjä',
-					jobDescript:'Jotain mitä tein työssä tai mikä oli tehtävänä etc.',
-				}
-			]
-		}
-	},
-	methods: 
-	{
-		testMessage: function (val) {
-			return !!(val%2);
-		}
-	}
-})
-
-Vue.component('skills-list',{
-	props:
-		['skills', 'title']
-	, 
-	template:`
-	<div class="skills-content">
-		<h3>{{title}}</h3>
-		<div class="skills-list">
-			<div v-for="(learn, index) in skills">
-				<ul class="skills-ul">
-					<li>{{learn}}</li>
-					<div v-if="index === skills.length-1">
-						<li v-show="!testMessage(index)" style="color:#666666;">-</li>
-					</div>
-				</ul>
-			</div>
-		</div>
-	</div>
-	`,
-	
-	methods:{
-		testMessage: function (val) {
-			return !!(val%2);
-		}
-	}
-})
 
 
 Vue.component('for-curious-page',{
@@ -453,30 +280,20 @@ Vue.component('for-curious-page',{
 			<div class="content-container">
 
 				<div class="c-something c-container">
-					<h2 class="am-h2">Tervetuloa uteliaalle</h2> 
-					<p>Sivu sisältää linkkejä mistä minut ja minun vapaa ajan projekteja löytää ja ehkä myös kuvia harrastuksista.</p> 
-					<img src="MEDIA/Xt0e.gif">
-					</div>
-
-				<div class="c-links c-container">
-					<h2 class="am-h2">Links to where to find me</h2>
-					<a class = "c-main-l" href="https://www.youtube.com/watch?v=1bGmjnkDTTI">Linkedin</a>
-					<ul class="c-link-list">
-						<li><a href="about_me.html">Github Profile</a></li>
-						<li><a href="about_me.html">Twitter</a></li>
-					</ul>
+					<h2 class="c-h2">Tervetuloa uteliaalle</h2> 
+					<p class="c-txt">Nimeni on Mika Lintula, valmistuin keväällä 2020 Viestintä ja tietotekniikan Tradenomiksi. Ohjelmointi osaamiseni on monipuolisella pohjalla, koska osaan monen ohjelmointi kielenperusteet.</p>
+					<p class="c-txt">Ja tässä on portfolio sivuni, jossa esittelen mitä projekteja teen vapaa-ajallani tai palasia työprojekteistani(työnantajan luvalla). Tarkoituksena on lisäillä niin valmiita kuin keskeneräisiä projekteja tai mitä uutta opettelen kyseisellä hetkellä.</p> 
+					<p class="c-txt">Sivu on vielä suurelta osalti kesken, jonka takia projektitkaan ei pääse esittäytymään täydessä kunniassaan.</p> 
+					<!--img class = "c-persona"src="MEDIA/IMG_ME.jpg"-->
 				</div>
 
 				<div class="c-other c-container">
-					<h2 class="am-h2">Other Stuff</h2>
+					<h2 class="c-h2">Muuta kivaa</h2>
 					<div class="c-content" v-for="curiousList in forCurious">
-						<div class="c-link-img">
-							<a :href="curiousList.theLink"><img :src="curiousList.theLinkImg" target="_blank"></a>
-						</div>
-
+						
 						<div class="c-info">
-							<a class="c-headr" :href="curiousList.theLink" target="_blank">{{curiousList.theThing}}</a>
-							<p class="c-discrpt">{{curiousList.theInfo}}</p>
+							<h3><a class="c-headr" :href="curiousList.theLink" target="_blank">{{curiousList.theThing}}</a></h3>
+							<p class="c-txt">{{curiousList.theInfo}}</p>
 						</div>
 						
 					</div>
@@ -489,33 +306,21 @@ Vue.component('for-curious-page',{
 		return{
 			forCurious:[
 			{
+				theThing:'Linkedin',
+				theLink:'https://www.linkedin.com/in/mika-lintula-9946b4131/',
+				theInfo:'Linkedin, jota on vasta aloitettu täydentämään ja käyttämään aktiivisemmin',
+			},
+			{
+				theThing:'Github',
+				theLink:'https://github.com/CoffeeHawk',
+				theInfo:'Hyvin hiljainen github nykyisellä hetkellä. Löytyy enemmän opiskeluajan peli projekteja',
+			},
+			{
 				theThing:'FrostHawk instagram',
 				theLink:'https://www.instagram.com/frost_hawk_fi/',
-				theLinkImg:'MEDIA/FHlogo.png',
-				theInfo:'Linkki instagram profiiliin jonne julkaisen kuvia koruista ja käsitöistä joita teen',
+				theInfo:'Linkki instagram profiiliin jonne julkaisen kuvia koruista ja käsitöistä joita teen harrastuksena',
 			}
 		]
-		}
-	}
-})
-
-
-Vue.component('nav-bar',{
-	props:{
-	},
-	template:`
-	<div class="Header">
-		<ul class="nav">
-			<li><a href="HTML/about_me.html">About me & Contacts</a></li>
-			<li><a href="HTML/projects.html">Projects</a></li>
-			<li><a href="HTML/contact.html">Only for curious</a></li>
-		</ul>
-		<h1>BirdHouse Company</h1>
-	</div>
-	`,
-	data(){
-		return{
-
 		}
 	}
 })

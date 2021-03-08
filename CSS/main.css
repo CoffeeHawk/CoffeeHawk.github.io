@@ -20,6 +20,7 @@ a{
 
 h2{
 	text-align: center;
+	color:#F7F7F9;
 }
 
 
@@ -70,7 +71,7 @@ footer{
 	
 }
 h1.page-header{
-	width: 50%;
+	width: 100%;
 	margin-top: 10px;
 	margin-left: auto;
 	margin-right: auto;
@@ -106,4 +107,5 @@ h1.page-header{
 }*/
 
 .selectedNavTab{color:green;
-	background-color: #F7F7F9;}
+	background-color: #F7F7F9;
+}
