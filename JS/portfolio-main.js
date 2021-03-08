@@ -122,7 +122,7 @@ Vue.component('project-tabs', {
 					</div>
 					<div class ="prcol2">
 						<div class="pr-img">
-							<img :src="pipproject.pipImage" alt="tile image no 1">
+							<!--img :src="pipproject.pipImage" alt="No Image Yet / or something went wrong again"-->
 						</div>
 					</div>
 				</div>
